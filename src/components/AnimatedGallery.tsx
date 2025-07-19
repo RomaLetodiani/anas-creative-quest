@@ -10,10 +10,10 @@ import { Challenge, challenges, challengesMap, totalArtworks } from "$/lib/image
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface AnimatedGalleryProps {
-  challengeId?: string | null;
+  challengeSlug?: string | null;
 }
 
-export const AnimatedGallery = ({ challengeId }: AnimatedGalleryProps) => {
+export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
   const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
   const router = useRouter();
   const pathname = usePathname();
@@ -34,13 +34,13 @@ export const AnimatedGallery = ({ challengeId }: AnimatedGalleryProps) => {
   );
 
   useLayoutEffect(() => {
-    if (challengeId) {
-      const challenge = challengesMap.get(Number(challengeId));
+    if (challengeSlug) {
+      const challenge = challengesMap.get(challengeSlug);
       if (challenge) {
         setSelectedChallenge(challenge);
       }
     }
-  }, [challengeId]);
+  }, [challengeSlug]);
 
   useEffect(() => {
     AOS.init({
@@ -53,17 +53,17 @@ export const AnimatedGallery = ({ challengeId }: AnimatedGalleryProps) => {
 
   const openModal = (challenge: Challenge) => {
     setSelectedChallenge(challenge);
-    router.push(`${pathname}?${createQueryString("challengeId", challenge.id.toString())}`);
+    router.push(`${pathname}?${createQueryString("challenge", challenge.slug)}`);
   };
 
   const closeModal = () => {
     setSelectedChallenge(null);
-    router.push(`${pathname}?${createQueryString("challengeId", "")}`);
+    router.push(`${pathname}?${createQueryString("challenge", "")}`);
   };
 
   const changeChallenge = (challenge: Challenge) => {
     setSelectedChallenge(challenge);
-    router.push(`${pathname}?${createQueryString("challengeId", challenge.id.toString())}`);
+    router.push(`${pathname}?${createQueryString("challenge", challenge.slug)}`);
   };
 
   const containerVariants = {
@@ -152,7 +152,7 @@ export const AnimatedGallery = ({ challengeId }: AnimatedGalleryProps) => {
           >
             {Array.from(challengesMap.values()).map((challenge, index) => (
               <div
-                key={challenge.id}
+                key={challenge.slug}
                 data-aos="fade-up"
                 data-aos-delay={index * 50}
                 data-aos-anchor-placement="top-bottom"

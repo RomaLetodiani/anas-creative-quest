@@ -3,26 +3,26 @@ import { challengesMap } from "$/lib/images.data";
 import { SearchParams } from "$/types/params.type";
 import { Metadata } from "next";
 
-type HomeProps = SearchParams<{ challengeId?: string | null }>;
+type HomeProps = SearchParams<{ challenge?: string | null }>;
 
 export async function generateMetadata({ searchParams }: HomeProps): Promise<Metadata> {
-  const { challengeId } = await searchParams;
+  const { challenge } = await searchParams;
 
-  const challenge = challengesMap.get(Number(challengeId));
-  const image = challenge?.images[0];
+  const challengeData = challenge ? challengesMap.get(challenge) : null;
+  const image = challengeData?.images[0];
 
   return {
-    description: challenge?.name,
+    description: challengeData?.name,
     openGraph: {
-      description: challenge?.name,
+      description: challengeData?.name,
       images: image ? [image] : ["/images/img1.jpeg"],
     },
   };
 }
 
 const Home = async ({ searchParams }: HomeProps) => {
-  const { challengeId } = await searchParams;
-  return <HomePageView challengeId={challengeId} />;
+  const { challenge } = await searchParams;
+  return <HomePageView challengeSlug={challenge} />;
 };
 
 export default Home;

@@ -4,17 +4,17 @@ import { AnimatedGallery } from "./AnimatedGallery";
 import { Footer } from "./Footer";
 
 type HomePageViewProps = {
-  challengeId?: string | null;
+  challengeSlug?: string | null;
 };
 
-export const HomePageView = ({ challengeId }: HomePageViewProps) => (
+export const HomePageView = ({ challengeSlug }: HomePageViewProps) => (
   <SmoothScrollProvider>
     <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-x-hidden">
       {/* Floating background elements */}
       <FloatingElements />
 
       {/* Gallery Section */}
-      <AnimatedGallery challengeId={challengeId} />
+      <AnimatedGallery challengeSlug={challengeSlug} />
 
       {/* Enhanced Footer */}
       <Footer />
