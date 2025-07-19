@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     "digital art",
     "artificial intelligence",
   ],
+  metadataBase: new URL("https://anas-creative-quest.vercel.app"),
   authors: [{ name: "Ana Kopadze" }],
   openGraph: {
     title: "Ana Kopadze's 30-Day AI Art Challenge",
