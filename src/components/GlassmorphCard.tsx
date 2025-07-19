@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useState, useRef } from "react";
-import { Challenge } from "$/lib/images";
+import { Challenge } from "$/lib/images.data";
 
 interface GlassmorphCardProps {
   challenge: Challenge;
@@ -21,15 +21,15 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  const rotateX = useSpring(useTransform(mouseY, [-100, 100], [30, -30]));
-  const rotateY = useSpring(useTransform(mouseX, [-100, 100], [-30, 30]));
+  const rotateX = useSpring(useTransform(mouseY, [-50, 50], [30, -30]));
+  const rotateY = useSpring(useTransform(mouseX, [-50, 50], [-30, 30]));
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
 
     const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
+    const centerX = rect.left + rect.width / 6;
+    const centerY = rect.top + rect.height / 6;
 
     mouseX.set(e.clientX - centerX);
     mouseY.set(e.clientY - centerY);
@@ -73,7 +73,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
       whileHover={{
         scale: 1.05,
         y: -10,
-        transition: { duration: 0.3 },
+        transition: { duration: 0.7 },
       }}
     >
       {/* Glass background with dynamic gradient */}
@@ -85,7 +85,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
         animate={{
           backdropFilter: isHovered ? "blur(40px)" : "blur(20px)",
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.7 }}
       />
 
       {/* Gradient overlay that appears on hover */}
@@ -94,7 +94,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
         animate={{
           opacity: isHovered ? 0.1 : 0,
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.7 }}
       />
 
       {/* Main content */}
@@ -142,9 +142,9 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
               <motion.div
                 className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"
                 animate={{
-                  opacity: isHovered ? 0.7 : 0.3,
+                  opacity: isHovered ? 0.7 : 0.7,
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.7 }}
               />
             </motion.div>
           )}
@@ -155,7 +155,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
               className="absolute top-3 right-3 glass-strong rounded-full px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-200"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.3 + index * 0.1, duration: 0.3 }}
+              transition={{ delay: 0.7 + index * 0.1, duration: 0.7 }}
               whileHover={{ scale: 1.1 }}
             >
               <div className="flex items-center gap-1">
@@ -178,33 +178,14 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
           animate={{
             y: isHovered ? -5 : 0,
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.7 }}
         >
           <motion.h3
             className="font-bold text-lg leading-tight text-gray-800 dark:text-gray-100 text-center"
-            animate={{
-              color: isHovered ? "#667eea" : undefined,
-            }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.7 }}
           >
             {challenge.name}
           </motion.h3>
-
-          <motion.div
-            className="text-center text-sm text-gray-600 dark:text-gray-300"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{
-              opacity: isHovered ? 1 : 0,
-              height: isHovered ? "auto" : 0,
-            }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="flex items-center justify-center gap-2">
-              <span>Challenge #{challenge.id}</span>
-              <span className="w-1 h-1 bg-current rounded-full" />
-              <span>AI Generated</span>
-            </div>
-          </motion.div>
         </motion.div>
 
         {/* Shimmer effect on hover */}

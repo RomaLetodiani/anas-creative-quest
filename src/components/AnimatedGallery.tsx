@@ -1,19 +1,46 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { GlassmorphCard } from "./GlassmorphCard";
 import { EnhancedModal } from "./EnhancedModal";
-import { Challenge } from "$/lib/images";
+import { Challenge, challengesMap } from "$/lib/images.data";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface AnimatedGalleryProps {
-  challenges: Challenge[];
+  challengeId?: string | null;
 }
 
-export const AnimatedGallery = ({ challenges }: AnimatedGalleryProps) => {
+export const AnimatedGallery = ({ challengeId }: AnimatedGalleryProps) => {
   const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const createQueryString = useCallback(
+    (name: string, value: string | null) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (value) {
+        params.set(name, value);
+      } else {
+        params.delete(name);
+      }
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  useLayoutEffect(() => {
+    if (challengeId) {
+      const challenge = challengesMap.get(Number(challengeId));
+      if (challenge) {
+        setSelectedChallenge(challenge);
+      }
+    }
+  }, [challengeId]);
 
   useEffect(() => {
     AOS.init({
@@ -26,17 +53,20 @@ export const AnimatedGallery = ({ challenges }: AnimatedGalleryProps) => {
 
   const openModal = (challenge: Challenge) => {
     setSelectedChallenge(challenge);
+    router.push(`${pathname}?${createQueryString("challengeId", challenge.id.toString())}`);
   };
 
   const closeModal = () => {
     setSelectedChallenge(null);
+    router.push(`${pathname}?${createQueryString("challengeId", "")}`);
   };
 
   const changeChallenge = (challenge: Challenge) => {
     setSelectedChallenge(challenge);
+    router.push(`${pathname}?${createQueryString("challengeId", challenge.id.toString())}`);
   };
 
-  const totalArtworks = challenges.reduce((total, challenge) => total + challenge.images.length, 0);
+  const totalArtworks = challengesMap.size;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -123,7 +153,7 @@ export const AnimatedGallery = ({ challenges }: AnimatedGalleryProps) => {
             initial="hidden"
             animate="visible"
           >
-            {challenges.map((challenge, index) => (
+            {Array.from(challengesMap.values()).map((challenge, index) => (
               <div
                 key={challenge.id}
                 data-aos="fade-up"
@@ -157,7 +187,7 @@ export const AnimatedGallery = ({ challenges }: AnimatedGalleryProps) => {
                   transition={{ type: "spring", stiffness: 300, damping: 15 }}
                 >
                   <div className="text-4xl sm:text-5xl font-bold text-gradient mb-3">
-                    {challenges.length}
+                    {challengesMap.size}
                   </div>
                   <div className="text-gray-600 dark:text-gray-300 font-medium text-lg">
                     Unique Challenges
@@ -235,7 +265,7 @@ export const AnimatedGallery = ({ challenges }: AnimatedGalleryProps) => {
       {/* Enhanced Modal */}
       <EnhancedModal
         challenge={selectedChallenge}
-        allChallenges={challenges}
+        allChallenges={Array.from(challengesMap.values())}
         onClose={closeModal}
         onChallengeChange={changeChallenge}
       />

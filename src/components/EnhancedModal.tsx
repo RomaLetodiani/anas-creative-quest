@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
-import { Challenge } from "$/lib/images";
+import { Challenge } from "$/lib/images.data";
 
 interface EnhancedModalProps {
   challenge: Challenge | null;
@@ -130,7 +130,7 @@ export const EnhancedModal = ({
           {/* Challenge navigation arrows */}
           <motion.button
             onClick={goToPreviousChallenge}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 glass-strong rounded-full p-4 text-white hover:scale-110 transition-transform duration-200"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 glass-strong rounded-full md:p-4 p-2 text-white hover:scale-110 transition-transform duration-200"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -146,7 +146,7 @@ export const EnhancedModal = ({
 
           <motion.button
             onClick={goToNextChallenge}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 glass-strong rounded-full p-4 text-white hover:scale-110 transition-transform duration-200"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 glass-strong rounded-full md:p-4 p-2 text-white hover:scale-110 transition-transform duration-200"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -155,54 +155,108 @@ export const EnhancedModal = ({
             </svg>
           </motion.button>
 
-          {/* Close button */}
-          <motion.button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-20 glass-strong rounded-full p-3 text-white hover:scale-110 transition-transform duration-200"
-            whileHover={{ scale: 1.1, rotate: 90 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </motion.button>
-
           <div className="glass-strong organic-border overflow-hidden shadow-floating">
-            {/* Image dots for multiple images */}
-            {hasMultipleImages && (
-              <motion.div
-                className="flex justify-center gap-3 p-4 bg-gray-50 dark:bg-gray-800"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                {challenge.images.map((_, index) => (
-                  <motion.button
-                    key={index}
-                    onClick={() => goToImage(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                      index === currentImageIndex
-                        ? "bg-violet-500 scale-125"
-                        : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
-                    }`}
-                    whileHover={{ scale: index === currentImageIndex ? 1.25 : 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                  />
-                ))}
-              </motion.div>
-            )}
+            <motion.div
+              className="flex justify-between items-center flex-wrap-reverse gap-3 pl-10 p-4 bg-gray-50 dark:bg-gray-800"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+            >
+              <div>
+                {/* Challenge counter */}
+                <div className="glass-strong text-white  px-4 py-2 rounded-full text-sm font-medium z-10">
+                  Challenge {currentChallengeIndex + 1} of {allChallenges.length}
+                </div>
+              </div>
+              <div className="flex gap-2 items-center">
+                {hasMultipleImages && (
+                  <div className="flex gap-4">
+                    <motion.button
+                      onClick={goToPreviousImage}
+                      className=" glass-strong rounded-full p-2 text-white z-10"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </motion.button>
+
+                    <div className="flex gap-2 items-center">
+                      {challenge.images.map((_, index) => (
+                        <motion.button
+                          key={index}
+                          onClick={() => goToImage(index)}
+                          className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                            index === currentImageIndex
+                              ? "bg-violet-500 scale-125"
+                              : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                          }`}
+                          whileHover={{ scale: index === currentImageIndex ? 1.25 : 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                        />
+                      ))}
+                    </div>
+                    <motion.button
+                      onClick={goToNextImage}
+                      className="glass-strong rounded-full p-2 text-white z-10"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </motion.button>
+                  </div>
+                )}
+              </div>
+
+              <div>
+                {/* Close button */}
+                <motion.button
+                  onClick={onClose}
+                  className="cursor-pointer glass-strong rounded-full p-1 text-white hover:scale-110 transition-transform duration-200"
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </motion.button>
+              </div>
+            </motion.div>
             {/* Image container with dynamic sizing */}
-            <div className="relative bg-black">
+            <div className="relative bg-black overflow-hidden">
               <div
                 className="relative w-full h-full"
                 style={{
-                  minHeight: "60vh",
-                  maxHeight: "70vh",
+                  minHeight: "50vh",
+                  maxHeight: "60vh",
                   aspectRatio: "auto",
                 }}
               >
@@ -221,72 +275,13 @@ export const EnhancedModal = ({
                       priority
                       fill
                       style={{
-                        minHeight: "60vh",
-                        maxHeight: "70vh",
+                        minHeight: "50vh",
+                        maxHeight: "60vh",
                         aspectRatio: "auto",
                       }}
                     />
                   ) : null}
                 </motion.div>
-
-                {/* Image counter */}
-                {hasMultipleImages && (
-                  <div className="absolute top-24 left-8 flex items-center gap-4 flex-col">
-                    <div className="glass-strong text-white px-4 py-2 rounded-full text-sm font-medium z-10">
-                      Image {currentImageIndex + 1} of {challenge.images.length}
-                    </div>
-                    {/* Image navigation arrows for multiple images */}
-                    {hasMultipleImages && (
-                      <div className="flex gap-4">
-                        <motion.button
-                          onClick={goToPreviousImage}
-                          className=" glass-strong rounded-full p-2 text-white z-10"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M15 19l-7-7 7-7"
-                            />
-                          </svg>
-                        </motion.button>
-                        <motion.button
-                          onClick={goToNextImage}
-                          className="glass-strong rounded-full p-2 text-white z-10"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <svg
-                            className="w-5 h-5"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        </motion.button>
-                      </div>
-                    )}
-                  </div>
-                )}
-
-                {/* Challenge counter */}
-                <div className="absolute top-8 left-8  glass-strong text-white px-4 py-2 rounded-full text-sm font-medium z-10">
-                  Challenge {currentChallengeIndex + 1} of {allChallenges.length}
-                </div>
               </div>
             </div>
 
@@ -297,10 +292,10 @@ export const EnhancedModal = ({
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
+              <div className="flex flex-col lg:flex-row md:gap-6 gap-2 items-start lg:items-center justify-between">
                 <div className="flex-1">
                   <motion.h2
-                    className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 text-gradient"
+                    className="md:text-2xl text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 text-gradient"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {challenge.name}
@@ -311,7 +306,7 @@ export const EnhancedModal = ({
                   href={challenge.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 glass-strong px-6 py-3 rounded-full text-gray-700 dark:text-gray-200 hover:scale-105 transition-transform duration-200 font-medium"
+                  className="inline-flex items-center gap-3 glass-strong md:px-6 px-3 md:py-3 py-2 rounded-full text-gray-700 dark:text-gray-200 hover:scale-105 transition-transform duration-200 font-medium"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
