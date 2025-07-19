@@ -14,14 +14,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Anas Creative Quest",
-  description: "Anas Creative Quest",
+  title: "Ana Kopadze's 30-Day AI Art Challenge | Creative Journey",
+  description:
+    "Explore Ana Kopadze's inspiring 30-day Canva AI challenge showcasing 19 unique creative artworks. A celebration of AI-powered artistic exploration and daily creativity.",
+  keywords: [
+    "Ana Kopadze",
+    "AI art",
+    "Canva AI",
+    "30-day challenge",
+    "creative journey",
+    "digital art",
+    "artificial intelligence",
+  ],
+  authors: [{ name: "Ana Kopadze" }],
+  openGraph: {
+    title: "Ana Kopadze's 30-Day AI Art Challenge",
+    description:
+      "Discover 19 stunning AI artworks from Ana Kopadze's creative 30-day challenge using Canva AI.",
+    type: "website",
+    images: [
+      {
+        url: "/images/img1.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Ana Kopadze AI Art Challenge Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ana Kopadze's 30-Day AI Art Challenge",
+    description: "Discover 19 stunning AI artworks from Ana Kopadze's creative journey.",
+    images: ["/images/img1.jpeg"],
+  },
 };
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans bg-background text-foreground`}
+      >
+        {children}
+      </body>
     </html>
   );
 };
