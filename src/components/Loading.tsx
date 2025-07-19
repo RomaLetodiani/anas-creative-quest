@@ -10,7 +10,7 @@ export const Loading = () => {
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
           Loading Gallery
         </h2>
-        <p className="text-gray-600 dark:text-gray-300">Preparing Ana's creative journey...</p>
+        <p className="text-gray-600 dark:text-gray-300">Preparing Ana&apos;s creative journey...</p>
       </div>
     </div>
   );

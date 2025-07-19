@@ -14,7 +14,7 @@ export const Header = ({ totalChallenges, completedChallenges }: HeaderProps) =>
             30 Days of AI Art
           </h1>
           <p className="text-xl sm:text-2xl text-violet-600 dark:text-violet-400 font-medium">
-            Ana Kopadze's Creative Journey
+            Ana Kopadze&apos;s Creative Journey
           </p>
         </div>
 

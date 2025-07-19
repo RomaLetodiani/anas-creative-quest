@@ -141,7 +141,7 @@ export const AnimatedGallery = ({ challengeId }: AnimatedGalleryProps) => {
                 data-aos-delay="200"
               >
                 Each artwork tells a unique story, capturing moments of inspiration and artistic
-                exploration throughout Ana's creative journey with AI.
+                exploration throughout Ana&apos;s creative journey with AI.
               </p>
             </motion.div>
           </motion.div>
