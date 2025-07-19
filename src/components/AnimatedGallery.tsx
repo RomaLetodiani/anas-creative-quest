@@ -157,11 +157,7 @@ export const AnimatedGallery = ({ challengeId }: AnimatedGalleryProps) => {
                 data-aos-delay={index * 50}
                 data-aos-anchor-placement="top-bottom"
               >
-                <GlassmorphCard
-                  challenge={challenge}
-                  onClick={() => openModal(challenge)}
-                  index={index}
-                />
+                <GlassmorphCard challenge={challenge} onClick={() => openModal(challenge)} />
               </div>
             ))}
           </motion.div>

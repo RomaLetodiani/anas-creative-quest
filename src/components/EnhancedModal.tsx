@@ -98,7 +98,6 @@ export const EnhancedModal = ({
   if (!challenge) return null;
 
   const hasMultipleImages = challenge.images.length > 1;
-  const currentChallengeIndex = allChallenges.findIndex((c) => c.id === challenge.id);
 
   return (
     <AnimatePresence>
@@ -165,7 +164,7 @@ export const EnhancedModal = ({
               <div>
                 {/* Challenge counter */}
                 <div className="glass-strong text-white  px-4 py-2 rounded-full text-sm font-medium z-10">
-                  Challenge {currentChallengeIndex + 1} of {allChallenges.length}
+                  Challenge {challenge.id} of {allChallenges.length}
                 </div>
               </div>
               <div className="flex gap-2 items-center">

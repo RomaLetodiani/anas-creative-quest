@@ -8,10 +8,9 @@ import { Challenge } from "$/lib/images.data";
 interface GlassmorphCardProps {
   challenge: Challenge;
   onClick: () => void;
-  index: number;
 }
 
-export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProps) => {
+export const GlassmorphCard = ({ challenge, onClick }: GlassmorphCardProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -48,7 +47,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
     "gradient-tertiary",
     "gradient-warm",
     "gradient-dream",
-  ][index % 5];
+  ][challenge.id % 5];
 
   return (
     <motion.div
@@ -67,7 +66,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
       animate={{ opacity: 1, y: 0 }}
       transition={{
         duration: 0.6,
-        delay: index * 0.1,
+        delay: challenge.id * 0.1,
         ease: "easeOut",
       }}
       whileHover={{
@@ -155,7 +154,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
               className="absolute top-3 right-3 glass-strong rounded-full px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-200"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.7 + index * 0.1, duration: 0.7 }}
+              transition={{ delay: 0.7 + challenge.id * 0.1, duration: 0.7 }}
               whileHover={{ scale: 1.1 }}
             >
               <div className="flex items-center gap-1">
