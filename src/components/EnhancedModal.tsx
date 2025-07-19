@@ -1,0 +1,369 @@
+"use client";
+
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
+
+interface Challenge {
+  id: number;
+  name: string;
+  images: string[];
+  linkedin: string;
+}
+
+interface EnhancedModalProps {
+  challenge: Challenge | null;
+  allChallenges: Challenge[];
+  onClose: () => void;
+  onChallengeChange: (challenge: Challenge) => void;
+}
+
+export const EnhancedModal = ({
+  challenge,
+  allChallenges,
+  onClose,
+  onChallengeChange,
+}: EnhancedModalProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Reset image index when challenge changes
+  useEffect(() => {
+    setCurrentImageIndex(0);
+    setImageLoaded(false);
+    setImageError(false);
+  }, [challenge]);
+
+  const goToNextChallenge = useCallback(() => {
+    if (!challenge) return;
+    const currentIndex = allChallenges.findIndex((c) => c.id === challenge.id);
+    const nextIndex = currentIndex === allChallenges.length - 1 ? 0 : currentIndex + 1;
+    onChallengeChange(allChallenges[nextIndex]);
+  }, [challenge, allChallenges, onChallengeChange]);
+
+  const goToPreviousChallenge = useCallback(() => {
+    if (!challenge) return;
+    const currentIndex = allChallenges.findIndex((c) => c.id === challenge.id);
+    const prevIndex = currentIndex === 0 ? allChallenges.length - 1 : currentIndex - 1;
+    onChallengeChange(allChallenges[prevIndex]);
+  }, [challenge, allChallenges, onChallengeChange]);
+
+  const goToNextImage = useCallback(() => {
+    if (!challenge) return;
+    setImageLoaded(false);
+    setCurrentImageIndex((prev) => (prev === challenge.images.length - 1 ? 0 : prev + 1));
+  }, [challenge]);
+
+  const goToPreviousImage = useCallback(() => {
+    if (!challenge) return;
+    setImageLoaded(false);
+    setCurrentImageIndex((prev) => (prev === 0 ? challenge.images.length - 1 : prev - 1));
+  }, [challenge]);
+
+  const goToImage = useCallback((index: number) => {
+    setImageLoaded(false);
+    setCurrentImageIndex(index);
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!challenge) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      } else if (e.key === "ArrowLeft" && e.shiftKey) {
+        goToPreviousChallenge();
+      } else if (e.key === "ArrowRight" && e.shiftKey) {
+        goToNextChallenge();
+      } else if (e.key === "ArrowLeft") {
+        goToPreviousImage();
+      } else if (e.key === "ArrowRight") {
+        goToNextImage();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [
+    challenge,
+    onClose,
+    goToPreviousChallenge,
+    goToNextChallenge,
+    goToPreviousImage,
+    goToNextImage,
+  ]);
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (challenge) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [challenge]);
+
+  if (!challenge) return null;
+
+  const hasMultipleImages = challenge.images.length > 1;
+  const currentChallengeIndex = allChallenges.findIndex((c) => c.id === challenge.id);
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Glassmorphism backdrop */}
+        <motion.div
+          className="absolute inset-0 glass-strong"
+          style={{ backdropFilter: "blur(20px)" }}
+          onClick={onClose}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        />
+
+        {/* Modal content */}
+        <motion.div
+          className="relative w-full max-w-7xl max-h-[95vh] overflow-hidden"
+          initial={{ scale: 0.8, opacity: 0, y: 50 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          exit={{ scale: 0.8, opacity: 0, y: 50 }}
+          transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        >
+          {/* Challenge navigation arrows */}
+          <motion.button
+            onClick={goToPreviousChallenge}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 glass-strong rounded-full p-4 text-white hover:scale-110 transition-transform duration-200"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </motion.button>
+
+          <motion.button
+            onClick={goToNextChallenge}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 glass-strong rounded-full p-4 text-white hover:scale-110 transition-transform duration-200"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
+
+          {/* Close button */}
+          <motion.button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-20 glass-strong rounded-full p-3 text-white hover:scale-110 transition-transform duration-200"
+            whileHover={{ scale: 1.1, rotate: 90 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </motion.button>
+
+          <div className="glass-strong organic-border overflow-hidden shadow-floating">
+            {/* Image container with dynamic sizing */}
+            <div className="relative bg-black">
+              <div
+                className="relative w-full"
+                style={{
+                  minHeight: "60vh",
+                  maxHeight: "70vh",
+                  aspectRatio: "auto",
+                }}
+              >
+                {/* Loading spinner */}
+                {!imageLoaded && !imageError && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
+                    <motion.div
+                      className="w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    />
+                  </div>
+                )}
+
+                {imageError ? (
+                  <div className="absolute inset-0 flex items-center justify-center bg-gray-900 text-white">
+                    <div className="text-center">
+                      <div className="text-4xl mb-4">🎨</div>
+                      <p>Artwork temporarily unavailable</p>
+                    </div>
+                  </div>
+                ) : (
+                  <motion.div
+                    key={`${challenge.id}-${currentImageIndex}`}
+                    className="relative w-full h-full"
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <Image
+                      src={challenge.images[currentImageIndex]}
+                      alt={`${challenge.name} - Image ${currentImageIndex + 1}`}
+                      fill
+                      className="object-contain"
+                      onLoad={() => setImageLoaded(true)}
+                      onError={() => setImageError(true)}
+                      priority
+                      sizes="100vw"
+                    />
+                  </motion.div>
+                )}
+
+                {/* Image navigation arrows for multiple images */}
+                {hasMultipleImages && (
+                  <>
+                    <motion.button
+                      onClick={goToPreviousImage}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 glass-strong rounded-full p-3 text-white z-10"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </motion.button>
+                    <motion.button
+                      onClick={goToNextImage}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 glass-strong rounded-full p-3 text-white z-10"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </motion.button>
+                  </>
+                )}
+
+                {/* Image counter */}
+                {hasMultipleImages && (
+                  <div className="absolute top-4 left-4 glass-strong text-white px-4 py-2 rounded-full text-sm font-medium z-10">
+                    {currentImageIndex + 1} of {challenge.images.length}
+                  </div>
+                )}
+
+                {/* Challenge counter */}
+                <div className="absolute top-4 left-1/2 -translate-x-1/2 glass-strong text-white px-4 py-2 rounded-full text-sm font-medium z-10">
+                  Challenge {currentChallengeIndex + 1} of {allChallenges.length}
+                </div>
+              </div>
+            </div>
+
+            {/* Challenge info */}
+            <motion.div
+              className="p-6 bg-white dark:bg-gray-900"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
+                <div className="flex-1">
+                  <motion.h2
+                    className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 text-gradient"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {challenge.name}
+                  </motion.h2>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Challenge #{challenge.id} • Created with Canva AI
+                  </p>
+                </div>
+
+                <motion.a
+                  href={challenge.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 glass-strong px-6 py-3 rounded-full text-gray-700 dark:text-gray-200 hover:scale-105 transition-transform duration-200 font-medium"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                  View Original Post
+                </motion.a>
+              </div>
+            </motion.div>
+
+            {/* Image dots for multiple images */}
+            {hasMultipleImages && (
+              <motion.div
+                className="flex justify-center gap-3 p-4 bg-gray-50 dark:bg-gray-800"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+              >
+                {challenge.images.map((_, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => goToImage(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                      index === currentImageIndex
+                        ? "bg-violet-500 scale-125"
+                        : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+                    }`}
+                    whileHover={{ scale: index === currentImageIndex ? 1.25 : 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                  />
+                ))}
+              </motion.div>
+            )}
+
+            {/* Keyboard shortcuts hint */}
+            <div className="px-6 pb-4 text-xs text-gray-500 dark:text-gray-400 text-center">
+              <p>
+                Use arrow keys to navigate images • Shift + arrows for challenges • ESC to close
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
