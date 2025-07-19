@@ -1,6 +1,8 @@
 "use client";
 
+import { LINKEDIN_URL } from "$/lib/socials";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export const Footer = () => (
   <motion.footer
@@ -34,14 +36,15 @@ export const Footer = () => (
         transition={{ duration: 0.8 }}
       >
         <div className="glass-strong organic-border p-10 shadow-floating">
-          <motion.h3
-            className="text-3xl sm:text-4xl font-bold mb-6 text-gradient"
-            style={{ fontFamily: "var(--font-display)" }}
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300, damping: 10 }}
-          >
-            Ana Kopadze
-          </motion.h3>
+          <Link href={LINKEDIN_URL} className="block">
+            <motion.h3
+              className="text-3xl sm:text-4xl font-bold mb-6 text-gradient"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 10 }}
+            >
+              Ana Kopadze
+            </motion.h3>
+          </Link>
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
@@ -50,7 +53,7 @@ export const Footer = () => (
             transition={{ delay: 0.5 }}
           >
             <motion.a
-              href="https://www.linkedin.com/in/anakopadze/"
+              href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 glass-strong px-8 py-4 organic-border text-gray-700 dark:text-gray-200 hover:scale-105 transition-all duration-300 font-medium shadow-dreamy"

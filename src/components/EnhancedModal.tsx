@@ -294,10 +294,7 @@ export const EnhancedModal = ({
             >
               <div className="flex flex-col lg:flex-row md:gap-6 gap-2 items-start lg:items-center justify-between">
                 <div className="flex-1">
-                  <motion.h2
-                    className="md:text-2xl text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 text-gradient"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
+                  <motion.h2 className="md:text-2xl text-xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 text-gradient">
                     {challenge.name}
                   </motion.h2>
                 </div>
