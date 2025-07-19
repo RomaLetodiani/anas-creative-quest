@@ -157,3 +157,8 @@ export const challenges: Challenge[] = [
 export const challengesMap = new Map(
   challenges.reverse().map((challenge) => [challenge.id, challenge])
 );
+
+export const totalArtworks = challenges.reduce(
+  (acc, challenge) => acc + challenge.images.length,
+  0
+);

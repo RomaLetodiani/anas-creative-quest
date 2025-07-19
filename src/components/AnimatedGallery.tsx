@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { GlassmorphCard } from "./GlassmorphCard";
 import { EnhancedModal } from "./EnhancedModal";
-import { Challenge, challengesMap } from "$/lib/images.data";
+import { Challenge, challenges, challengesMap, totalArtworks } from "$/lib/images.data";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface AnimatedGalleryProps {
@@ -65,8 +65,6 @@ export const AnimatedGallery = ({ challengeId }: AnimatedGalleryProps) => {
     setSelectedChallenge(challenge);
     router.push(`${pathname}?${createQueryString("challengeId", challenge.id.toString())}`);
   };
-
-  const totalArtworks = challengesMap.size;
 
   const containerVariants = {
     hidden: { opacity: 0 },
