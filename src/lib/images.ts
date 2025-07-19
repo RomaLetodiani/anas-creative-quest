@@ -1,6 +1,6 @@
 type ImagePath = `/images/img${number}.jpeg`;
 
-type Challenge = {
+export type Challenge = {
   id: number;
   name: string;
   images: ImagePath[];

@@ -3,13 +3,7 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
-
-interface Challenge {
-  id: number;
-  name: string;
-  images: string[];
-  linkedin: string;
-}
+import { Challenge } from "$/lib/images";
 
 interface EnhancedModalProps {
   challenge: Challenge | null;
@@ -25,14 +19,10 @@ export const EnhancedModal = ({
   onChallengeChange,
 }: EnhancedModalProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageError, setImageError] = useState(false);
 
   // Reset image index when challenge changes
   useEffect(() => {
     setCurrentImageIndex(0);
-    setImageLoaded(false);
-    setImageError(false);
   }, [challenge]);
 
   const goToNextChallenge = useCallback(() => {
@@ -51,18 +41,15 @@ export const EnhancedModal = ({
 
   const goToNextImage = useCallback(() => {
     if (!challenge) return;
-    setImageLoaded(false);
     setCurrentImageIndex((prev) => (prev === challenge.images.length - 1 ? 0 : prev + 1));
   }, [challenge]);
 
   const goToPreviousImage = useCallback(() => {
     if (!challenge) return;
-    setImageLoaded(false);
     setCurrentImageIndex((prev) => (prev === 0 ? challenge.images.length - 1 : prev - 1));
   }, [challenge]);
 
   const goToImage = useCallback((index: number) => {
-    setImageLoaded(false);
     setCurrentImageIndex(index);
   }, []);
 
@@ -186,151 +173,6 @@ export const EnhancedModal = ({
           </motion.button>
 
           <div className="glass-strong organic-border overflow-hidden shadow-floating">
-            {/* Image container with dynamic sizing */}
-            <div className="relative bg-black">
-              <div
-                className="relative w-full"
-                style={{
-                  minHeight: "60vh",
-                  maxHeight: "70vh",
-                  aspectRatio: "auto",
-                }}
-              >
-                {/* Loading spinner */}
-                {!imageLoaded && !imageError && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
-                    <motion.div
-                      className="w-12 h-12 border-4 border-violet-500 border-t-transparent rounded-full"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    />
-                  </div>
-                )}
-
-                {imageError ? (
-                  <div className="absolute inset-0 flex items-center justify-center bg-gray-900 text-white">
-                    <div className="text-center">
-                      <div className="text-4xl mb-4">🎨</div>
-                      <p>Artwork temporarily unavailable</p>
-                    </div>
-                  </div>
-                ) : (
-                  <motion.div
-                    key={`${challenge.id}-${currentImageIndex}`}
-                    className="relative w-full h-full"
-                    initial={{ opacity: 0, scale: 1.05 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <Image
-                      src={challenge.images[currentImageIndex]}
-                      alt={`${challenge.name} - Image ${currentImageIndex + 1}`}
-                      fill
-                      className="object-contain"
-                      onLoad={() => setImageLoaded(true)}
-                      onError={() => setImageError(true)}
-                      priority
-                      sizes="100vw"
-                    />
-                  </motion.div>
-                )}
-
-                {/* Image navigation arrows for multiple images */}
-                {hasMultipleImages && (
-                  <>
-                    <motion.button
-                      onClick={goToPreviousImage}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 glass-strong rounded-full p-3 text-white z-10"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 19l-7-7 7-7"
-                        />
-                      </svg>
-                    </motion.button>
-                    <motion.button
-                      onClick={goToNextImage}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 glass-strong rounded-full p-3 text-white z-10"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </motion.button>
-                  </>
-                )}
-
-                {/* Image counter */}
-                {hasMultipleImages && (
-                  <div className="absolute top-4 left-4 glass-strong text-white px-4 py-2 rounded-full text-sm font-medium z-10">
-                    {currentImageIndex + 1} of {challenge.images.length}
-                  </div>
-                )}
-
-                {/* Challenge counter */}
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 glass-strong text-white px-4 py-2 rounded-full text-sm font-medium z-10">
-                  Challenge {currentChallengeIndex + 1} of {allChallenges.length}
-                </div>
-              </div>
-            </div>
-
-            {/* Challenge info */}
-            <motion.div
-              className="p-6 bg-white dark:bg-gray-900"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
-                <div className="flex-1">
-                  <motion.h2
-                    className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 text-gradient"
-                    style={{ fontFamily: "var(--font-display)" }}
-                  >
-                    {challenge.name}
-                  </motion.h2>
-                  <p className="text-gray-600 dark:text-gray-300">
-                    Challenge #{challenge.id} • Created with Canva AI
-                  </p>
-                </div>
-
-                <motion.a
-                  href={challenge.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 glass-strong px-6 py-3 rounded-full text-gray-700 dark:text-gray-200 hover:scale-105 transition-transform duration-200 font-medium"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                  View Original Post
-                </motion.a>
-              </div>
-            </motion.div>
-
             {/* Image dots for multiple images */}
             {hasMultipleImages && (
               <motion.div
@@ -354,13 +196,132 @@ export const EnhancedModal = ({
                 ))}
               </motion.div>
             )}
+            {/* Image container with dynamic sizing */}
+            <div className="relative bg-black">
+              <div
+                className="relative w-full h-full"
+                style={{
+                  minHeight: "60vh",
+                  maxHeight: "70vh",
+                  aspectRatio: "auto",
+                }}
+              >
+                <motion.div
+                  key={`${challenge.id}-${currentImageIndex}`}
+                  className="relative w-full h-full"
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {challenge.images[currentImageIndex] ? (
+                    <Image
+                      src={challenge.images[currentImageIndex]}
+                      alt={`${challenge.name} - Image ${currentImageIndex + 1}`}
+                      className="object-contain w-full h-full"
+                      priority
+                      fill
+                      style={{
+                        minHeight: "60vh",
+                        maxHeight: "70vh",
+                        aspectRatio: "auto",
+                      }}
+                    />
+                  ) : null}
+                </motion.div>
 
-            {/* Keyboard shortcuts hint */}
-            <div className="px-6 pb-4 text-xs text-gray-500 dark:text-gray-400 text-center">
-              <p>
-                Use arrow keys to navigate images • Shift + arrows for challenges • ESC to close
-              </p>
+                {/* Image counter */}
+                {hasMultipleImages && (
+                  <div className="absolute top-24 left-8 flex items-center gap-4 flex-col">
+                    <div className="glass-strong text-white px-4 py-2 rounded-full text-sm font-medium z-10">
+                      Image {currentImageIndex + 1} of {challenge.images.length}
+                    </div>
+                    {/* Image navigation arrows for multiple images */}
+                    {hasMultipleImages && (
+                      <div className="flex gap-4">
+                        <motion.button
+                          onClick={goToPreviousImage}
+                          className=" glass-strong rounded-full p-2 text-white z-10"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M15 19l-7-7 7-7"
+                            />
+                          </svg>
+                        </motion.button>
+                        <motion.button
+                          onClick={goToNextImage}
+                          className="glass-strong rounded-full p-2 text-white z-10"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                        >
+                          <svg
+                            className="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </motion.button>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Challenge counter */}
+                <div className="absolute top-8 left-8  glass-strong text-white px-4 py-2 rounded-full text-sm font-medium z-10">
+                  Challenge {currentChallengeIndex + 1} of {allChallenges.length}
+                </div>
+              </div>
             </div>
+
+            {/* Challenge info */}
+            <motion.div
+              className="p-6 bg-white dark:bg-gray-900"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
+                <div className="flex-1">
+                  <motion.h2
+                    className="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 text-gradient"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {challenge.name}
+                  </motion.h2>
+                </div>
+
+                <motion.a
+                  href={challenge.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 glass-strong px-6 py-3 rounded-full text-gray-700 dark:text-gray-200 hover:scale-105 transition-transform duration-200 font-medium"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                  View Original Post
+                </motion.a>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </motion.div>

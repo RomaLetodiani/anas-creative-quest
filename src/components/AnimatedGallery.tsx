@@ -6,13 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { GlassmorphCard } from "./GlassmorphCard";
 import { EnhancedModal } from "./EnhancedModal";
-
-interface Challenge {
-  id: number;
-  name: string;
-  images: string[];
-  linkedin: string;
-}
+import { Challenge } from "$/lib/images";
 
 interface AnimatedGalleryProps {
   challenges: Challenge[];

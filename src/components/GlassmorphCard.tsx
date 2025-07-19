@@ -3,14 +3,10 @@
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useState, useRef } from "react";
+import { Challenge } from "$/lib/images";
 
 interface GlassmorphCardProps {
-  challenge: {
-    id: number;
-    name: string;
-    images: string[];
-    linkedin: string;
-  };
+  challenge: Challenge;
   onClick: () => void;
   index: number;
 }
