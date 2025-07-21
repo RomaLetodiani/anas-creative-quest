@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { Challenge } from "$/lib/images.data";
 import { CopyButton } from "./modal/copy-button";
+import { CloseButton } from "./modal/close-button";
 
 interface EnhancedModalProps {
   challenge: Challenge | null;
@@ -130,7 +131,7 @@ export const EnhancedModal = ({
           {/* Challenge navigation arrows */}
           <motion.button
             onClick={goToPreviousChallenge}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 glass-strong rounded-full md:p-4 p-2 text-white hover:scale-110 transition-transform duration-200"
+            className="absolute left-4 top-1/2 cursor-pointer -translate-y-1/2 z-20 glass-strong rounded-full md:p-4 p-2 text-white hover:scale-110 transition-transform duration-200"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -146,7 +147,7 @@ export const EnhancedModal = ({
 
           <motion.button
             onClick={goToNextChallenge}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 glass-strong rounded-full md:p-4 p-2 text-white hover:scale-110 transition-transform duration-200"
+            className="absolute right-4 top-1/2 cursor-pointer -translate-y-1/2 z-20 glass-strong rounded-full md:p-4 p-2 text-white hover:scale-110 transition-transform duration-200"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -231,24 +232,7 @@ export const EnhancedModal = ({
                 )}
               </div>
 
-              <div>
-                {/* Close button */}
-                <motion.button
-                  onClick={onClose}
-                  className="cursor-pointer glass-strong rounded-full p-1 text-white hover:scale-110 transition-transform duration-200"
-                  whileHover={{ scale: 1.1, rotate: 90 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </motion.button>
-              </div>
+              <CloseButton onClose={onClose} />
             </motion.div>
             {/* Image container with dynamic sizing */}
             <div className="relative bg-black overflow-hidden">
