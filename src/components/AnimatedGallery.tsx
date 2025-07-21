@@ -8,6 +8,8 @@ import { GlassmorphCard } from "./GlassmorphCard";
 import { EnhancedModal } from "./EnhancedModal";
 import { Challenge, challenges, challengesMap, totalArtworks } from "$/lib/images.data";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { GalleryStatistics } from "./gallery-statistics";
+import { CallToAction } from "./call-to-action";
 
 interface AnimatedGalleryProps {
   challengeSlug?: string | null;
@@ -166,96 +168,9 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
             ))}
           </motion.div>
 
-          {/* Gallery statistics */}
-          <motion.div
-            className="mt-20"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            <div
-              className="glass-strong organic-border p-8 shadow-floating max-w-4xl mx-auto"
-              data-aos="zoom-in"
-              data-aos-delay="800"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                >
-                  <div className="text-4xl sm:text-5xl font-bold text-gradient mb-3">
-                    {challengesMap.size}
-                  </div>
-                  <div className="text-gray-600 dark:text-gray-300 font-medium text-lg">
-                    Unique Challenges
-                  </div>
-                  <div className="w-12 h-1 bg-gradient-to-r from-violet-500 to-purple-500 rounded-full mx-auto mt-2" />
-                </motion.div>
+          <GalleryStatistics />
 
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                >
-                  <div className="text-4xl sm:text-5xl font-bold text-gradient mb-3">
-                    {totalArtworks}
-                  </div>
-                  <div className="text-gray-600 dark:text-gray-300 font-medium text-lg">
-                    Total Artworks
-                  </div>
-                  <div className="w-12 h-1 bg-gradient-to-r from-pink-500 to-red-500 rounded-full mx-auto mt-2" />
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                >
-                  <div className="text-4xl sm:text-5xl font-bold text-gradient mb-3">∞</div>
-                  <div className="text-gray-600 dark:text-gray-300 font-medium text-lg">
-                    Creative Possibilities
-                  </div>
-                  <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mx-auto mt-2" />
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Call to action */}
-          <motion.div
-            className="mt-16 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <motion.div
-              className="glass organic-border-alt p-6 max-w-2xl mx-auto shadow-dreamy"
-              whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              data-aos="fade-up"
-              data-aos-delay="1000"
-            >
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                Ready to start your own creative journey?
-              </p>
-              <motion.a
-                href="https://www.canva.com/ai-image-generator/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 gradient-primary text-white px-8 py-3 rounded-full font-medium hover:shadow-2xl transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-                Try Canva AI
-              </motion.a>
-            </motion.div>
-          </motion.div>
+          <CallToAction />
         </div>
       </section>
 
