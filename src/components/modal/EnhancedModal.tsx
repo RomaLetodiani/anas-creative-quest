@@ -4,8 +4,8 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useState } from "react";
 import { Challenge } from "$/lib/images.data";
-import { CopyButton } from "./modal/copy-button";
-import { CloseButton } from "./modal/close-button";
+import { CopyButton } from "./copy-button";
+import { CloseButton } from "./close-button";
 
 interface EnhancedModalProps {
   challenge: Challenge | null;

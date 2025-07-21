@@ -4,12 +4,12 @@ import { useState, useEffect, useLayoutEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { GlassmorphCard } from "../GlassmorphCard";
-import { EnhancedModal } from "../EnhancedModal";
-import { Challenge, challenges, challengesMap, totalArtworks } from "$/lib/images.data";
+import { GlassmorphCard } from "./GlassmorphCard";
+import { Challenge, challengesMap } from "$/lib/images.data";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { GalleryStatistics } from "./gallery-statistics";
 import { CallToAction } from "./call-to-action";
+import { EnhancedModal } from "../modal/EnhancedModal";
 
 interface AnimatedGalleryProps {
   challengeSlug?: string | null;
