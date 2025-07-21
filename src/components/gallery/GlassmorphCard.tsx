@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useState, useRef } from "react";
-import { Challenge } from "$/lib/images.data";
+import { Challenge } from '$/lib/images.data';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import Image from 'next/image';
+import { useRef, useState } from 'react';
 
 interface GlassmorphCardProps {
   challenge: Challenge;
@@ -42,22 +42,16 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
   };
 
   // Dynamic gradient based on image index
-  const gradientClass = [
-    "gradient-primary",
-    "gradient-secondary",
-    "gradient-tertiary",
-    "gradient-warm",
-    "gradient-dream",
-  ][index % 5];
+  const gradientClass = ['gradient-primary', 'gradient-secondary', 'gradient-tertiary', 'gradient-warm', 'gradient-dream'][index % 5];
 
   return (
     <motion.div
       ref={cardRef}
-      className="group relative overflow-hidden cursor-pointer"
+      className="group relative cursor-pointer overflow-hidden"
       style={{
         rotateX,
         rotateY,
-        transformStyle: "preserve-3d",
+        transformStyle: 'preserve-3d',
       }}
       onClick={onClick}
       onMouseMove={handleMouseMove}
@@ -68,7 +62,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
       transition={{
         duration: 0.6,
         delay: index * 0.1,
-        ease: "easeOut",
+        ease: 'easeOut',
       }}
       whileHover={{
         scale: 1.05,
@@ -78,12 +72,12 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
     >
       {/* Glass background with dynamic gradient */}
       <motion.div
-        className="absolute inset-0 glass organic-border shadow-floating"
+        className="glass organic-border shadow-floating absolute inset-0"
         style={{
-          background: isHovered ? "rgba(255, 255, 255, 0.4)" : "rgba(255, 255, 255, 0.25)",
+          background: isHovered ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 255, 255, 0.25)',
         }}
         animate={{
-          backdropFilter: isHovered ? "blur(40px)" : "blur(20px)",
+          backdropFilter: isHovered ? 'blur(40px)' : 'blur(20px)',
         }}
         transition={{ duration: 0.7 }}
       />
@@ -98,29 +92,29 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
       />
 
       {/* Main content */}
-      <div className="relative z-10 p-4 h-full">
+      <div className="relative z-10 h-full p-4">
         {/* Image container */}
-        <div className="relative aspect-square mb-4 overflow-hidden organic-border-alt shadow-dreamy">
+        <div className="organic-border-alt shadow-dreamy relative mb-4 aspect-square overflow-hidden">
           {!imageLoaded && !imageError && (
-            <div className="absolute inset-0 glass-strong flex items-center justify-center">
+            <div className="glass-strong absolute inset-0 flex items-center justify-center">
               <motion.div
-                className="w-8 h-8 border-2 border-violet-500 border-t-transparent rounded-full"
+                className="h-8 w-8 rounded-full border-2 border-violet-500 border-t-transparent"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
               />
             </div>
           )}
 
           {imageError ? (
-            <div className="absolute inset-0 glass-strong flex items-center justify-center">
+            <div className="glass-strong absolute inset-0 flex items-center justify-center">
               <div className="text-center text-gray-500 dark:text-gray-400">
-                <div className="text-2xl mb-2">🎨</div>
+                <div className="mb-2 text-2xl">🎨</div>
                 <p className="text-sm">Artwork Loading</p>
               </div>
             </div>
           ) : (
             <motion.div
-              className="relative w-full h-full"
+              className="relative h-full w-full"
               initial={{ scale: 1.1 }}
               animate={{
                 scale: imageLoaded ? 1 : 1.1,
@@ -152,19 +146,15 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
           {/* Multi-image indicator */}
           {hasMultipleImages && (
             <motion.div
-              className="absolute top-3 right-3 glass-strong rounded-full px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-200"
+              className="glass-strong absolute top-3 right-3 rounded-full px-3 py-1.5 text-xs font-bold text-gray-700 dark:text-gray-200"
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.7 + index * 0.1, duration: 0.7 }}
               whileHover={{ scale: 1.1 }}
             >
               <div className="flex items-center gap-1">
-                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
-                    clipRule="evenodd"
-                  />
+                <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
                 </svg>
                 {challenge.images.length}
               </div>
@@ -180,30 +170,27 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
           }}
           transition={{ duration: 0.7 }}
         >
-          <motion.h3
-            className="font-bold text-lg leading-tight text-gray-800 dark:text-gray-100 text-center"
-            transition={{ duration: 0.7 }}
-          >
+          <motion.h3 className="text-center text-lg leading-tight font-bold text-gray-800 dark:text-gray-100" transition={{ duration: 0.7 }}>
             {challenge.name}
           </motion.h3>
         </motion.div>
 
         {/* Shimmer effect on hover */}
         <motion.div
-          className="absolute inset-0 pointer-events-none"
-          initial={{ x: "-100%" }}
+          className="pointer-events-none absolute inset-0"
+          initial={{ x: '-100%' }}
           animate={{
-            x: isHovered ? "100%" : "-100%",
+            x: isHovered ? '100%' : '-100%',
           }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+          <div className="h-full w-full skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         </motion.div>
       </div>
 
       {/* Floating corner accents */}
       <motion.div
-        className="absolute top-2 left-2 w-3 h-3 bg-gradient-to-br from-violet-400 to-purple-500 rounded-full opacity-60"
+        className="absolute top-2 left-2 h-3 w-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-500 opacity-60"
         animate={{
           scale: isHovered ? [1, 1.2, 1] : 1,
           opacity: isHovered ? [0.6, 1, 0.6] : 0.6,
@@ -212,7 +199,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
       />
 
       <motion.div
-        className="absolute bottom-2 right-2 w-2 h-2 bg-gradient-to-br from-pink-400 to-red-500 rounded-full opacity-50"
+        className="absolute right-2 bottom-2 h-2 w-2 rounded-full bg-gradient-to-br from-pink-400 to-red-500 opacity-50"
         animate={{
           scale: isHovered ? [1, 1.3, 1] : 1,
           opacity: isHovered ? [0.5, 0.8, 0.5] : 0.5,

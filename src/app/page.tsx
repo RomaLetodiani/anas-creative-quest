@@ -1,7 +1,7 @@
-import { HomePageView } from "$/components/home-page-view";
-import { challengesMap } from "$/lib/images.data";
-import { SearchParams } from "$/types/params.type";
-import { Metadata } from "next";
+import { HomePageView } from '$/components/home-page-view';
+import { challengesMap } from '$/lib/images.data';
+import { SearchParams } from '$/types/params.type';
+import { Metadata } from 'next';
 
 type HomeProps = SearchParams<{ challenge?: string | null }>;
 
@@ -15,7 +15,7 @@ export async function generateMetadata({ searchParams }: HomeProps): Promise<Met
     description: challengeData?.name,
     openGraph: {
       description: challengeData?.name,
-      images: image ? [image] : ["/images/img1.jpeg"],
+      images: image ? [image] : ['/images/img1.jpeg'],
     },
   };
 }

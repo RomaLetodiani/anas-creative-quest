@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { useCallback, useState } from "react";
+import { motion } from 'framer-motion';
+import { useCallback, useState } from 'react';
 
 type CopyButtonProps = {
   challengeSlug: string;
@@ -18,18 +18,18 @@ export const CopyButton = ({ challengeSlug }: CopyButtonProps) => {
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
     } catch (err) {
-      console.error("Failed to copy URL:", err);
+      console.error('Failed to copy URL:', err);
       // Fallback for older browsers
-      const textArea = document.createElement("textarea");
+      const textArea = document.createElement('textarea');
       textArea.value = url;
       document.body.appendChild(textArea);
       textArea.select();
       try {
-        document.execCommand("copy");
+        document.execCommand('copy');
         setCopySuccess(true);
         setTimeout(() => setCopySuccess(false), 2000);
       } catch (fallbackErr) {
-        console.error("Fallback copy failed:", fallbackErr);
+        console.error('Fallback copy failed:', fallbackErr);
       } finally {
         document.body.removeChild(textArea);
       }
@@ -38,31 +38,21 @@ export const CopyButton = ({ challengeSlug }: CopyButtonProps) => {
   return (
     <motion.button
       onClick={handleShare}
-      className="relative cursor-pointer inline-flex items-center gap-3 glass-strong px-3 py-2 sm:w-28 rounded-full text-gray-700 dark:text-gray-200 hover:scale-105 transition-transform duration-200 font-medium"
+      className="glass-strong relative inline-flex cursor-pointer items-center gap-3 rounded-full px-3 py-2 font-medium text-gray-700 transition-transform duration-200 hover:scale-105 sm:w-28 dark:text-gray-200"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       disabled={copySuccess}
     >
       {copySuccess ? (
-        <motion.div
-          className="flex items-center gap-2"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.2 }}
-        >
-          <svg
-            className="w-5 h-5 text-green-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+        <motion.div className="flex items-center gap-2" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.2 }}>
+          <svg className="h-5 w-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
-          <span className="text-green-500 hidden sm:inline">Copied!</span>
+          <span className="hidden text-green-500 sm:inline">Copied!</span>
         </motion.div>
       ) : (
         <>
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"

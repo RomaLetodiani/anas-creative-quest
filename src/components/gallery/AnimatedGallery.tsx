@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState, useEffect, useLayoutEffect, useCallback } from "react";
-import { motion } from "framer-motion";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { GlassmorphCard } from "./GlassmorphCard";
-import { Challenge, challengesMap } from "$/lib/images.data";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { GalleryStatistics } from "./gallery-statistics";
-import { CallToAction } from "./call-to-action";
-import { EnhancedModal } from "../modal/EnhancedModal";
+import { Challenge, challengesMap } from '$/lib/images.data';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { motion } from 'framer-motion';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react';
+import { EnhancedModal } from '../modal/EnhancedModal';
+import { CallToAction } from './call-to-action';
+import { GalleryStatistics } from './gallery-statistics';
+import { GlassmorphCard } from './GlassmorphCard';
 
 interface AnimatedGalleryProps {
   challengeSlug?: string | null;
@@ -32,7 +32,7 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
 
       return params.toString();
     },
-    [searchParams]
+    [searchParams],
   );
 
   useLayoutEffect(() => {
@@ -47,7 +47,7 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      easing: "ease-out-cubic",
+      easing: 'ease-out-cubic',
       once: true,
       offset: 100,
     });
@@ -55,17 +55,17 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
 
   const openModal = (challenge: Challenge) => {
     setSelectedChallenge(challenge);
-    router.push(`${pathname}?${createQueryString("challenge", challenge.slug)}`);
+    router.push(`${pathname}?${createQueryString('challenge', challenge.slug)}`);
   };
 
   const closeModal = () => {
     setSelectedChallenge(null);
-    router.push(`${pathname}?${createQueryString("challenge", "")}`);
+    router.push(`${pathname}?${createQueryString('challenge', '')}`);
   };
 
   const changeChallenge = (challenge: Challenge) => {
     setSelectedChallenge(challenge);
-    router.push(`${pathname}?${createQueryString("challenge", challenge.slug)}`);
+    router.push(`${pathname}?${createQueryString('challenge', challenge.slug)}`);
   };
 
   const containerVariants = {
@@ -81,13 +81,13 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
 
   return (
     <>
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
         {/* Background elements */}
-        <div className="absolute inset-0 gradient-dream opacity-5" />
+        <div className="gradient-dream absolute inset-0 opacity-5" />
 
         {/* Floating background shapes */}
         <motion.div
-          className="absolute top-20 left-10 w-32 h-32 gradient-secondary opacity-20 rounded-full blur-2xl"
+          className="gradient-secondary absolute top-20 left-10 h-32 w-32 rounded-full opacity-20 blur-2xl"
           animate={{
             x: [0, 50, 0],
             y: [0, -30, 0],
@@ -96,12 +96,12 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
 
         <motion.div
-          className="absolute bottom-20 right-10 w-40 h-40 gradient-tertiary opacity-15 rounded-full blur-3xl"
+          className="gradient-tertiary absolute right-10 bottom-20 h-40 w-40 rounded-full opacity-15 blur-3xl"
           animate={{
             x: [0, -40, 0],
             y: [0, 20, 0],
@@ -110,60 +110,37 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="relative z-10 mx-auto max-w-7xl">
           {/* Section header */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.div className="mb-16 text-center" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <motion.div
-              className="glass-strong organic-border p-8 max-w-3xl mx-auto shadow-floating"
+              className="glass-strong organic-border shadow-floating mx-auto max-w-3xl p-8"
               whileHover={{ scale: 1.02, y: -5 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
-              <h2
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gradient text-glow"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
+              <h2 className="text-gradient text-glow mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl" data-aos="fade-up" data-aos-delay="100">
                 The Creative Gallery
               </h2>
-              <p
-                className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                Each artwork tells a unique story, capturing moments of inspiration and artistic
-                exploration throughout Ana&apos;s creative journey with AI.
+              <p className="text-lg leading-relaxed text-gray-600 sm:text-xl dark:text-gray-300" data-aos="fade-up" data-aos-delay="200">
+                Each artwork tells a unique story, capturing moments of inspiration and artistic exploration throughout Ana&apos;s creative journey with AI.
               </p>
             </motion.div>
           </motion.div>
 
           {/* Gallery grid */}
           <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+            className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             {Array.from(challengesMap.values()).map((challenge, index) => (
-              <div
-                key={challenge.slug}
-                data-aos="fade-up"
-                data-aos-delay={index * 50}
-                data-aos-anchor-placement="top-bottom"
-              >
-                <GlassmorphCard
-                  challenge={challenge}
-                  onClick={() => openModal(challenge)}
-                  index={index}
-                />
+              <div key={challenge.slug} data-aos="fade-up" data-aos-delay={index * 50} data-aos-anchor-placement="top-bottom">
+                <GlassmorphCard challenge={challenge} onClick={() => openModal(challenge)} index={index} />
               </div>
             ))}
           </motion.div>

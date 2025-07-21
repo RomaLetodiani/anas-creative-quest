@@ -1,7 +1,7 @@
-import { SmoothScrollProvider } from "./SmoothScrollProvider";
-import { FloatingElements } from "./FloatingElements";
-import { AnimatedGallery } from "./gallery/AnimatedGallery";
-import { Footer } from "./Footer";
+import { FloatingElements } from './FloatingElements';
+import { Footer } from './Footer';
+import { AnimatedGallery } from './gallery/AnimatedGallery';
+import { SmoothScrollProvider } from './SmoothScrollProvider';
 
 type HomePageViewProps = {
   challengeSlug?: string | null;
@@ -9,7 +9,7 @@ type HomePageViewProps = {
 
 export const HomePageView = ({ challengeSlug }: HomePageViewProps) => (
   <SmoothScrollProvider>
-    <div className="min-h-screen bg-white dark:bg-gray-900 relative overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden bg-white dark:bg-gray-900">
       {/* Floating background elements */}
       <FloatingElements />
 

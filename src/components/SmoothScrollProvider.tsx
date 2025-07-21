@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect } from 'react';
 
 interface SmoothScrollProviderProps {
   children: ReactNode;
@@ -9,10 +9,10 @@ interface SmoothScrollProviderProps {
 export const SmoothScrollProvider = ({ children }: SmoothScrollProviderProps) => {
   useEffect(() => {
     // Enable smooth scrolling
-    document.documentElement.style.scrollBehavior = "smooth";
+    document.documentElement.style.scrollBehavior = 'smooth';
 
     return () => {
-      document.documentElement.style.scrollBehavior = "auto";
+      document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
 

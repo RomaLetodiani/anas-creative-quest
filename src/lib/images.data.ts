@@ -12,11 +12,10 @@ export type Challenge = {
 export const challenges: Challenge[] = [
   {
     id: 1,
-    name: "The Hidden Forrest",
-    slug: "the-hidden-forrest",
-    images: ["/images/img1.jpeg"],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7345392404914397186-yaEk",
+    name: 'The Hidden Forrest',
+    slug: 'the-hidden-forrest',
+    images: ['/images/img1.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7345392404914397186-yaEk',
     description: `გადავწყვიტე, ჩემს თავს პატარა გამოწვევა დავუსახო⚡️
 
 ზოგადად, ძალიან მიყვარს ფიქრი, მაქვს ჩემი სამყარო და მილიონი იდეა.
@@ -36,11 +35,10 @@ AI-მ მომცა შესაძლებლობა, რაც ჩემ
   },
   {
     id: 2,
-    name: "Last Breath of The Earth",
-    slug: "last-breath-of-the-earth",
-    images: ["/images/img2.jpeg"],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-canvaai-activity-7345752211592810498-31EQ",
+    name: 'Last Breath of The Earth',
+    slug: 'last-breath-of-the-earth',
+    images: ['/images/img2.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-canvaai-activity-7345752211592810498-31EQ',
     description: `გამოწვევის მეორე დღე და მეორე სურათი - "Last Breath of The Earth". 🌏
 
 ძალიან მაშინებს რასაც სპეციალისტებისგან ვისმენ, რა გველოდება მომავალში, თუ ჩვენს პლანეტას უკეთ არ მივხედავთ და არ შევუწყიბთ ხელს. 
@@ -56,10 +54,9 @@ AI-მ მომცა შესაძლებლობა, რაც ჩემ
   {
     id: 3,
     name: "The Dreamer's Library",
-    slug: "the-dreamers-library",
-    images: ["/images/img3.jpeg"],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-canvaai-activity-7346133299167178752-2nMo",
+    slug: 'the-dreamers-library',
+    images: ['/images/img3.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-canvaai-activity-7346133299167178752-2nMo',
     description: `გამოწვევის მესამე დღე - "The Dreamer's Library". ✨️
 
 გადავწყვიტე, ამ გამოწვევის საშუალებით ცოტა თავიც გაგაცნოთ. 30 დღე საკმაოდ ბევრია, რომ ჩემთვის მნიშვნელოვან საკითხებს შევეხო. 📖
@@ -74,11 +71,10 @@ AI-მ მომცა შესაძლებლობა, რაც ჩემ
   },
   {
     id: 4,
-    name: "Rebuild from Trash",
-    slug: "rebuild-from-trash",
-    images: ["/images/img4.jpeg"],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7346610458830721024-ppsK",
+    name: 'Rebuild from Trash',
+    slug: 'rebuild-from-trash',
+    images: ['/images/img4.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7346610458830721024-ppsK',
     description: `გამოწვევის მეოთხე დღე - "Rebuild from Trash".
 
 დღევანდელი დღე მართლა გამოწვევა იყო ჩემთვის. ბავშვებს ჩუტყვავილა აქვთ, მე - ვირუსი. ალბათ, შეგიძლიათ წარმოიდგინოთ რა ხდება ჩემს სახლში 😵‍💫
@@ -91,11 +87,11 @@ AI-მ მომცა შესაძლებლობა, რაც ჩემ
   },
   {
     id: 5,
-    name: "The Nomad Cities",
-    slug: "the-nomad-cities",
-    images: ["/images/img5.jpeg"],
+    name: 'The Nomad Cities',
+    slug: 'the-nomad-cities',
+    images: ['/images/img5.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%AE%E1%83%A3%E1%83%97%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-nomad-cities-activity-7346959692788592640-HYUO",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%AE%E1%83%A3%E1%83%97%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-nomad-cities-activity-7346959692788592640-HYUO',
     description: `გამოწვევის მეხუთე დღე - "The Nomad Cities".
 
 დისტანციურად მუშაობა კი მიყვარს, მაგრამ ასეატ ოფისში ხანდახან მივიდოდი 😁
@@ -108,11 +104,10 @@ AI-მ მომცა შესაძლებლობა, რაც ჩემ
   },
   {
     id: 6,
-    name: "Tiny Forrest of My Dreams",
-    slug: "tiny-forrest-of-my-dreams",
-    images: ["/images/img6.jpeg", "/images/img7.jpeg", "/images/img8.jpeg"],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7347178012578144256-BiKu",
+    name: 'Tiny Forrest of My Dreams',
+    slug: 'tiny-forrest-of-my-dreams',
+    images: ['/images/img6.jpeg', '/images/img7.jpeg', '/images/img8.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7347178012578144256-BiKu',
     description: `გამოწვევის მეექვსე დღე - "Tiny Forrest of My Dreams"
 
 ბავშვურად მჯერა საოცრებების და ჯადოსნური სამყაროების არსებობის ✨️
@@ -129,11 +124,10 @@ AI-მ მომცა შესაძლებლობა, რაც ჩემ
   },
   {
     id: 7,
-    name: "Inner Peace",
-    slug: "inner-peace",
-    images: ["/images/img9.jpeg"],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7347519470531137536-ozBA",
+    name: 'Inner Peace',
+    slug: 'inner-peace',
+    images: ['/images/img9.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7347519470531137536-ozBA',
     description: `გამოწვევის მეშვიდე დღე - "Inner Peace".
 
 დღევანდელ გარემოში ძალიან მიჭირს რამენაირი სიმშვიდის პოვნა. მუდმივი სტრესი, ქვეყნის ბედზე ნერვიულობა, ჩქარა-ჩქარა მოსასწრები საქმეები, ათასი სხვა საფიქრალი. ბევრი გამიგებთ, დარწმუნებული ვარ. 
@@ -148,17 +142,10 @@ AI-მ მომცა შესაძლებლობა, რაც ჩემ
   },
   {
     id: 8,
-    name: "A Tale of a Secret Town",
-    slug: "a-tale-of-a-secret-town",
-    images: [
-      "/images/img10.jpeg",
-      "/images/img11.jpeg",
-      "/images/img12.jpeg",
-      "/images/img13.jpeg",
-      "/images/img14.jpeg",
-    ],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7347952704410808320-jO4z",
+    name: 'A Tale of a Secret Town',
+    slug: 'a-tale-of-a-secret-town',
+    images: ['/images/img10.jpeg', '/images/img11.jpeg', '/images/img12.jpeg', '/images/img13.jpeg', '/images/img14.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7347952704410808320-jO4z',
     description: `გამოწვევის მერვე დღე - "A Tale of a Secret Town"
 
 გადავწყვიტე, ამ კვირაში, ჩემს წარმოსახვაში არსებულ პატარა ჯადოსნური ქალაქი გავაცოცხლო. 🏘
@@ -175,16 +162,10 @@ AI-მ მომცა შესაძლებლობა, რაც ჩემ
   },
   {
     id: 9,
-    name: "World at Your Feet",
-    slug: "world-at-your-feet",
-    images: [
-      "/images/img15.jpeg",
-      "/images/img16.jpeg",
-      "/images/img17.jpeg",
-      "/images/img18.jpeg",
-    ],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7348380185068539904-X_AJ",
+    name: 'World at Your Feet',
+    slug: 'world-at-your-feet',
+    images: ['/images/img15.jpeg', '/images/img16.jpeg', '/images/img17.jpeg', '/images/img18.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7348380185068539904-X_AJ',
     description: `🇬🇪⬇️ Day 9 of my challenge - "World at Your Feet".
 I just noticed, Canva replies to tags on English posts? 👀 Let's experiment a little and see if I get their attention. 
 
@@ -216,11 +197,10 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 10,
-    name: "The Forbidden Bookshop",
-    slug: "the-forbidden-bookshop",
-    images: ["/images/img19.jpeg", "/images/img20.jpeg"],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7348653023859982336-djHS",
+    name: 'The Forbidden Bookshop',
+    slug: 'the-forbidden-bookshop',
+    images: ['/images/img19.jpeg', '/images/img20.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7348653023859982336-djHS',
     description: `გამოწვევის მეათე დღე - "The Forbidden Bookshop" 
 
 ვაგრძელებ ჩემი პატარა ჯადოსნური ქალაქის ამბავს და მგონი, მხოლოდ ფოტოებს კი არა, მთლიან ისტორიასაც ვუქმნი 😁
@@ -242,11 +222,10 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 11,
-    name: "My Tiny Corner",
-    slug: "my-tiny-corner",
-    images: ["/images/img21.jpeg", "/images/img22.jpeg"],
-    linkedin:
-      "https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7349122645956640768-ZKI-",
+    name: 'My Tiny Corner',
+    slug: 'my-tiny-corner',
+    images: ['/images/img21.jpeg', '/images/img22.jpeg'],
+    linkedin: 'https://www.linkedin.com/posts/anakopadze_madewithcanva-activity-7349122645956640768-ZKI-',
     description: `გამოწვევის მეთერთმეტე დღე - "My Tiny Corner"
 
 დღეს ისეთი დღე მქონდა, გადავწყვიტე, ჩემს წარმოსახვით ქალაქში მაინც დავაღწიო თავი. 🤐
@@ -261,11 +240,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 12,
-    name: "The Portal",
-    slug: "the-portal",
-    images: ["/images/img23.jpeg"],
+    name: 'The Portal',
+    slug: 'the-portal',
+    images: ['/images/img23.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%9D%E1%83%A0%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-portal-activity-7349499082240851968-fYAJ",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%9D%E1%83%A0%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-portal-activity-7349499082240851968-fYAJ',
     description: `გამოწვევის მეთორმეტე დღე - "The Portal"
 
 თუ ბოლო რამდენიმე დღე ჩემს წარმოსახვით ჯადოსნურ ქალაქს ადევნებდით თვალს და სტუმრობა მოგინდათ - ეს პორტალი თქვენთვისაა. 🔮
@@ -278,11 +257,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 13,
-    name: "A Jar Full of Ideas",
-    slug: "a-jar-full-of-ideas",
-    images: ["/images/img24.jpeg"],
+    name: 'A Jar Full of Ideas',
+    slug: 'a-jar-full-of-ideas',
+    images: ['/images/img24.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%AA%E1%83%90%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-a-jar-full-of-activity-7349884790805860354-dZbb",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%AA%E1%83%90%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-a-jar-full-of-activity-7349884790805860354-dZbb',
     description: `გამოწვევის მეცამეტე დღე - "A Jar Full of Ideas"
 
 ასეთი წარმომიდგენია ქილა, სადაც იდეებს ჩავყრიდი, რომ შემეძლოს. 🧚‍♀️
@@ -298,11 +277,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 14,
-    name: "A Magical Friendship",
-    slug: "a-magical-friendship",
-    images: ["/images/img25.jpeg"],
+    name: 'A Magical Friendship',
+    slug: 'a-magical-friendship',
+    images: ['/images/img25.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%9D%E1%83%97%E1%83%AE%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-a-magical-friendship-activity-7350244324346900481-mBXw",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%9D%E1%83%97%E1%83%AE%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-a-magical-friendship-activity-7350244324346900481-mBXw',
     description: `გამოწვევის მეთოთხმეტე დღე - "A Magical Friendship".
 
 დრაკონის ადგილას რომ ჩემი უზარმაზარი ძაღლი წარმოიდგინოთ, ჩემს ინსპირაციის წყარომდეც მიხვალთ 😁
@@ -317,11 +296,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 15,
-    name: "Portrait of a Dreamer",
-    slug: "portrait-of-a-dreamer",
-    images: ["/images/img26.jpeg"],
+    name: 'Portrait of a Dreamer',
+    slug: 'portrait-of-a-dreamer',
+    images: ['/images/img26.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%AE%E1%83%A3%E1%83%A2%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-portrait-of-a-activity-7350576500758269953-wyKT",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%AE%E1%83%A3%E1%83%A2%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-portrait-of-a-activity-7350576500758269953-wyKT',
     description: `გამოწვევის მეთხუტმეტე დღე -"Portrait of a Dreamer"
 
 საზღვარგარეთ რომ ვსწავლობდი, ლექტორმა ავტოპორტრეტის დახატვა დაგვავალა, უკეთ რომ გაგიცნოთო.
@@ -338,11 +317,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 16,
-    name: "Dream Factory",
-    slug: "dream-factory",
-    images: ["/images/img27.jpeg"],
+    name: 'Dream Factory',
+    slug: 'dream-factory',
+    images: ['/images/img27.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%94%E1%83%A5%E1%83%95%E1%83%A1%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-dream-factory-activity-7350920136251322371-W6tw",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%94%E1%83%A5%E1%83%95%E1%83%A1%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-dream-factory-activity-7350920136251322371-W6tw',
     description: `გამოწვევის მეთექვსმეტე დღე - "Dream Factory"
 
 წარმოიდგინეთ, ჯადოსნური ლაბორატორია, სადაც, პატარა ფერიები ქმნიან სიზმრებს. აი, ასე, პირდაპირ ფურცლებზე ადნობენ თავიანთ ჯადოსნურ ძალებს იმისთვის, რომ ჩვენ განსაკუთრებული და მხოლოდ ჩვენთვის შექმნილი სიზმრები ვნახოთ ✨️ ეს ზიმრები კი, ჩვენს ქვეცნობიერში რჩება და გვიბიძგებს მნიშვნელოვანი ნაბიჯების გადადგმისკენ. 
@@ -360,11 +339,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 17,
-    name: "The Tree of Dreams",
-    slug: "the-tree-of-dreams",
-    images: ["/images/img28.jpeg"],
+    name: 'The Tree of Dreams',
+    slug: 'the-tree-of-dreams',
+    images: ['/images/img28.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%A9%E1%83%95%E1%83%98%E1%83%93%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-tree-of-activity-7351312001647677443-cLum",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%A9%E1%83%95%E1%83%98%E1%83%93%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-tree-of-activity-7351312001647677443-cLum',
     description: `გამოწვევის მეჩვიდმეტე დღე - "The Tree of Dreams"
 
 ხე, რომელიც ოცნებებს ინახავს. თითო ფოთოლი, თითო მივიწყებული ოცნებაა, რომელიც ახდენას ელოდება. 🌳
@@ -385,11 +364,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 18,
-    name: "Lantern Festival",
-    slug: "lantern-festival",
-    images: ["/images/img29.jpeg"],
+    name: 'Lantern Festival',
+    slug: 'lantern-festival',
+    images: ['/images/img29.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%95%E1%83%A0%E1%83%90%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-lantern-festival-activity-7351660234647515136-jkwU",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%97%E1%83%95%E1%83%A0%E1%83%90%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-lantern-festival-activity-7351660234647515136-jkwU',
     description: `გამოწვევის მეთვრამეტე დღე -"Lantern Festival"
 
 ცათამბრჯენების თავზე, წელიწადში ერთხელ, ჯადოსნური მანათობელი ხიდი ჩნდება. ✨️
@@ -404,11 +383,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 19,
-    name: "The Umbrella Orchard",
-    slug: "the-umbrella-orchard",
-    images: ["/images/img30.jpeg", "/images/img31.jpeg"],
+    name: 'The Umbrella Orchard',
+    slug: 'the-umbrella-orchard',
+    images: ['/images/img30.jpeg', '/images/img31.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%AA%E1%83%AE%E1%83%A0%E1%83%90%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-umbrella-activity-7352018216505819136-gA_a",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%AA%E1%83%AE%E1%83%A0%E1%83%90%E1%83%9B%E1%83%94%E1%83%A2%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-umbrella-activity-7352018216505819136-gA_a',
     description: `გამოწვევის მეცხრამეტე დღე - "The Umbrella Orchard"
 
 ტყე, სადაც პატრონებისგან მივიწყებული ქოლგები ფესვებს იდგამს და სამუდამოდ ინახავს ასევე მოვიწყებულ მოგონებებს. წვიმის დროს კი, ყველა ქოლგა იშლება და ასხივებს მათთვის ძვირფას მოგონებებს.
@@ -421,11 +400,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 20,
-    name: "A Magical Suitcase",
-    slug: "a-magical-suitcase",
-    images: ["/images/img32.jpeg"],
+    name: 'A Magical Suitcase',
+    slug: 'a-magical-suitcase',
+    images: ['/images/img32.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%9D%E1%83%AA%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-a-magical-suitcase-activity-7352388803648438272-UMWU",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9B%E1%83%94%E1%83%9D%E1%83%AA%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-a-magical-suitcase-activity-7352388803648438272-UMWU',
     description: `გამოწვევის მეოცე დღე - "A Magical Suitcase"
 
 ერთ ოკეანისპირა პატარა ქალაქში ცხოვრობს პატარა გოგონა, რომელიც საღამოობით ოკეანის გამორიყულ "განძს" აგროვებს. 
@@ -440,11 +419,11 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
   {
     id: 21,
-    name: "The Secret Night Market",
-    slug: "the-secret-night-market",
-    images: ["/images/img33.jpeg", "/images/img34.jpeg"],
+    name: 'The Secret Night Market',
+    slug: 'the-secret-night-market',
+    images: ['/images/img33.jpeg', '/images/img34.jpeg'],
     linkedin:
-      "https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9D%E1%83%AA%E1%83%93%E1%83%90%E1%83%9B%E1%83%94%E1%83%94%E1%83%A0%E1%83%97%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-secret-night-activity-7352726337838637057-9oQU",
+      'https://www.linkedin.com/posts/anakopadze_%E1%83%92%E1%83%90%E1%83%9B%E1%83%9D%E1%83%AC%E1%83%95%E1%83%94%E1%83%95%E1%83%98%E1%83%A1-%E1%83%9D%E1%83%AA%E1%83%93%E1%83%90%E1%83%9B%E1%83%94%E1%83%94%E1%83%A0%E1%83%97%E1%83%94-%E1%83%93%E1%83%A6%E1%83%94-the-secret-night-activity-7352726337838637057-9oQU',
     description: `გამოწვევის ოცდამეერთე დღე - "The Secret Night Market"
 
 წამოგიდგენთ საიდუმლო ბაზრობას, რომელიც მხოლოდ ღამით იხსნება. აქ შეძლებთ შეიძინოთ სხვის მიერ დავიწყებული სახელები (საყვარელი ადამიანების, ცხოველების, ადგილების ან თუნდაც საკუთარ თავში აღმოჩენილი სამყაროების) და მათთან დაკავშირებული მოგონებები. მაგრამ, სანაცვლოდ, საკუთარი ძვირფასი მოგონება უნდა დატოვოთ. ⭐ 
@@ -457,11 +436,6 @@ P.S. I challenged myself to share photos made by Canva AI and I on a daily basis
   },
 ];
 
-export const challengesMap = new Map(
-  challenges.reverse().map((challenge) => [challenge.slug, challenge])
-);
+export const challengesMap = new Map(challenges.reverse().map((challenge) => [challenge.slug, challenge]));
 
-export const totalArtworks = challenges.reduce(
-  (acc, challenge) => acc + challenge.images.length,
-  0
-);
+export const totalArtworks = challenges.reduce((acc, challenge) => acc + challenge.images.length, 0);
