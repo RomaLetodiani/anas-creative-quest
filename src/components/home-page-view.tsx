@@ -1,6 +1,6 @@
 import { SmoothScrollProvider } from "./SmoothScrollProvider";
 import { FloatingElements } from "./FloatingElements";
-import { AnimatedGallery } from "./AnimatedGallery";
+import { AnimatedGallery } from "./gallery/AnimatedGallery";
 import { Footer } from "./Footer";
 
 type HomePageViewProps = {
