@@ -116,29 +116,6 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
           exit={{ scale: 0.8, opacity: 0, y: 50 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
         >
-          {/* Challenge navigation arrows */}
-          <motion.button
-            onClick={goToPreviousChallenge}
-            className="glass-strong absolute top-1/2 left-4 z-20 -translate-y-1/2 cursor-pointer rounded-full p-2 text-white transition-transform duration-200 hover:scale-110 md:p-4"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </motion.button>
-
-          <motion.button
-            onClick={goToNextChallenge}
-            className="glass-strong absolute top-1/2 right-4 z-20 -translate-y-1/2 cursor-pointer rounded-full p-2 text-white transition-transform duration-200 hover:scale-110 md:p-4"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </motion.button>
-
           <div className="glass-strong organic-border shadow-floating overflow-hidden">
             <motion.div
               className="flex flex-wrap-reverse items-center justify-between gap-3 bg-gray-50 p-4 pl-10 dark:bg-gray-800"
@@ -196,7 +173,7 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
               <CloseButton onClose={onClose} />
             </motion.div>
             {/* Image container with dynamic sizing */}
-            <div className="relative overflow-hidden bg-black">
+            <div className="bg-glass relative overflow-hidden">
               <div
                 className="relative h-full w-full"
                 style={{
@@ -228,10 +205,37 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
                   ) : null}
                 </motion.div>
               </div>
+              {/* Challenge navigation arrows */}
+              <motion.button
+                onClick={goToPreviousChallenge}
+                className="glass-strong absolute top-1/2 left-4 z-20 -translate-y-1/2 cursor-pointer rounded-full p-2 text-white transition-transform duration-200 hover:scale-110 md:p-4"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </motion.button>
+
+              <motion.button
+                onClick={goToNextChallenge}
+                className="glass-strong absolute top-1/2 right-4 z-20 -translate-y-1/2 cursor-pointer rounded-full p-2 text-white transition-transform duration-200 hover:scale-110 md:p-4"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </motion.button>
             </div>
 
             {/* Challenge info */}
-            <motion.div className="bg-white p-6 dark:bg-gray-900" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
+            <motion.div
+              className="max-h-1/2 overflow-y-auto bg-white p-6 dark:bg-gray-900"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
               <div className="space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <motion.h2 className="text-gradient mb-2 text-xl font-bold text-gray-900 md:text-2xl lg:text-3xl dark:text-white">{challenge.name}</motion.h2>
@@ -254,10 +258,7 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
                     <CopyButton challengeSlug={challenge.slug} />
                   </div>
                 </div>
-                <motion.p
-                  key={challenge.id}
-                  className="glass-strong max-h-[10vh] overflow-y-auto rounded-lg p-2 text-sm text-gray-600 md:max-h-[20vh] dark:text-gray-400"
-                >
+                <motion.p key={challenge.id} className="glass-strong rounded-lg p-2 text-sm text-gray-600 dark:text-gray-400">
                   {challenge.description.split('\n').map((line, index) => (
                     <span key={index}>
                       {line}
