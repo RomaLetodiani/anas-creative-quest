@@ -119,7 +119,7 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
           <div className="glass-strong organic-border shadow-floating overflow-hidden">
             <motion.div
               className="flex flex-wrap-reverse items-center justify-between gap-3 bg-gray-50 p-4 pl-10 dark:bg-gray-800"
-              initial={{ y: 20, opacity: 0 }}
+              initial={{ y: -20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
             >
@@ -231,12 +231,14 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
 
             {/* Challenge info */}
             <motion.div
-              className="max-h-1/2 overflow-y-auto bg-white p-6 dark:bg-gray-900"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
+              className="custom-scrollbar h-[25vh] overflow-y-auto bg-white dark:bg-gray-900"
+              style={{
+                scrollbarWidth: 'thin',
+                scrollbarColor: 'rgba(167, 139, 250, 0.5) transparent',
+              }}
+              key={challenge.id}
             >
-              <div className="space-y-4">
+              <div className="space-y-4 p-6">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <motion.h2 className="text-gradient mb-2 text-xl font-bold text-gray-900 md:text-2xl lg:text-3xl dark:text-white">{challenge.name}</motion.h2>
                   <div className="flex flex-wrap items-center gap-5">
@@ -258,7 +260,7 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
                     <CopyButton challengeSlug={challenge.slug} />
                   </div>
                 </div>
-                <motion.p key={challenge.id} className="glass-strong rounded-lg p-2 text-sm text-gray-600 dark:text-gray-400">
+                <motion.p className="glass-strong rounded-lg p-2 text-sm text-gray-600 dark:text-gray-400">
                   {challenge.description.split('\n').map((line, index) => (
                     <span key={index}>
                       {line}
