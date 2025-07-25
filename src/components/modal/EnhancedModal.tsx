@@ -134,7 +134,7 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
                   <div className="flex gap-4">
                     <motion.button
                       onClick={goToPreviousImage}
-                      className="glass-strong z-10 rounded-full p-2 text-white"
+                      className="glass-strong z-10 cursor-pointer rounded-full p-2 text-white"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -149,7 +149,9 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
                           key={index}
                           onClick={() => goToImage(index)}
                           className={`h-3 w-3 rounded-full transition-all duration-200 ${
-                            index === currentImageIndex ? 'scale-125 bg-violet-500' : 'bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500'
+                            index === currentImageIndex
+                              ? 'scale-125 bg-violet-500'
+                              : 'cursor-pointer bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500'
                           }`}
                           whileHover={{ scale: index === currentImageIndex ? 1.25 : 1.1 }}
                           whileTap={{ scale: 0.9 }}
@@ -158,7 +160,7 @@ export const EnhancedModal = ({ challenge, allChallenges, onClose, onChallengeCh
                     </div>
                     <motion.button
                       onClick={goToNextImage}
-                      className="glass-strong z-10 rounded-full p-2 text-white"
+                      className="glass-strong z-10 cursor-pointer rounded-full p-2 text-white"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                     >
