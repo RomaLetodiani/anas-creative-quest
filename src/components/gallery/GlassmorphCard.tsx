@@ -92,7 +92,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
       />
 
       {/* Main content */}
-      <div className="relative z-10 h-full p-4">
+      <div className="organic-border relative z-10 h-full overflow-hidden p-4">
         {/* Image container */}
         <div className="organic-border-alt shadow-dreamy relative mb-4 aspect-square overflow-hidden">
           {!imageLoaded && !imageError && (
@@ -190,7 +190,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
 
       {/* Floating corner accents */}
       <motion.div
-        className="absolute top-2 left-2 h-3 w-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-500 opacity-60"
+        className="absolute top-3 left-3 h-3 w-3 rounded-full bg-gradient-to-br from-violet-400 to-purple-500 opacity-60"
         animate={{
           scale: isHovered ? [1, 1.2, 1] : 1,
           opacity: isHovered ? [0.6, 1, 0.6] : 0.6,
@@ -199,7 +199,7 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
       />
 
       <motion.div
-        className="absolute right-2 bottom-2 h-2 w-2 rounded-full bg-gradient-to-br from-pink-400 to-red-500 opacity-50"
+        className="absolute right-3 bottom-3 h-2 w-2 rounded-full bg-gradient-to-br from-pink-400 to-red-500 opacity-50"
         animate={{
           scale: isHovered ? [1, 1.3, 1] : 1,
           opacity: isHovered ? [0.5, 0.8, 0.5] : 0.5,
