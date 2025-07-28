@@ -1,3 +1,4 @@
+import { totalArtworks } from '$/lib/images.data';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { PropsWithChildren } from 'react';
@@ -14,15 +15,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ana Kopadze's 30-Day AI Art Challenge | Creative Journey",
-  description:
-    "Explore Ana Kopadze's inspiring 30-day Canva AI challenge showcasing 19 unique creative artworks. A celebration of AI-powered artistic exploration and daily creativity.",
-  keywords: ['Ana Kopadze', 'AI art', 'Canva AI', '30-day challenge', 'creative journey', 'digital art', 'artificial intelligence'],
+  title: "Ana Kopadze's AI Art Challenge | Creative Journey",
+  description: `Explore Ana Kopadze's inspiring Canva AI challenge showcasing ${totalArtworks} unique creative artworks. A celebration of AI-powered artistic exploration and daily creativity.`,
+  keywords: ['Ana Kopadze', 'AI art', 'Canva AI', 'creative journey', 'digital art', 'artificial intelligence'],
   metadataBase: new URL('https://anas-creative-quest.vercel.app'),
   authors: [{ name: 'Ana Kopadze' }],
   openGraph: {
-    title: "Ana Kopadze's 30-Day AI Art Challenge",
-    description: "Discover 19 stunning AI artworks from Ana Kopadze's creative 30-day challenge using Canva AI.",
+    title: "Ana Kopadze's AI Art Challenge",
+    description: `Discover ${totalArtworks} stunning AI artworks from Ana Kopadze's creative journey using Canva AI.`,
     type: 'website',
     images: [
       {
@@ -35,8 +35,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Ana Kopadze's 30-Day AI Art Challenge",
-    description: "Discover 19 stunning AI artworks from Ana Kopadze's creative journey.",
+    title: "Ana Kopadze's AI Art Challenge",
+    description: `Discover ${totalArtworks} stunning AI artworks from Ana Kopadze's creative journey.`,
     images: ['/images/img1.jpeg'],
   },
 };
