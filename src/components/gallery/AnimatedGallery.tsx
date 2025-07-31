@@ -68,17 +68,6 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
     router.push(`${pathname}?${createQueryString('challenge', challenge.slug)}`);
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
   return (
     <>
       <section className="relative overflow-hidden px-4 py-20 sm:px-6 lg:px-8">
@@ -116,32 +105,23 @@ export const AnimatedGallery = ({ challengeSlug }: AnimatedGalleryProps) => {
 
         <div className="relative z-10 mx-auto max-w-7xl">
           {/* Section header */}
-          <motion.div className="mb-16 text-center" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <div className="mb-16 text-center">
             <motion.div
               className="glass-strong organic-border shadow-floating mx-auto max-w-3xl p-8"
-              whileHover={{ scale: 1.02, y: -5 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
-              <h2 className="text-gradient text-glow mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl" data-aos="fade-up" data-aos-delay="100">
-                The Creative Gallery
-              </h2>
-              <p className="text-lg leading-relaxed text-gray-600 sm:text-xl dark:text-gray-300" data-aos="fade-up" data-aos-delay="200">
+              <h2 className="text-gradient text-glow mb-6 text-4xl font-bold sm:text-5xl lg:text-6xl">The Creative Gallery</h2>
+              <p className="text-lg leading-relaxed text-gray-600 sm:text-xl dark:text-gray-300">
                 Each artwork tells a unique story, capturing moments of inspiration and artistic exploration throughout Ana&apos;s creative journey with AI.
               </p>
             </motion.div>
-          </motion.div>
+          </div>
 
           {/* Gallery grid */}
-          <motion.div
-            className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          <motion.div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {Array.from(challengesMap.values()).map((challenge, index) => (
-              <div key={challenge.slug} data-aos="fade-up" data-aos-delay={index * 50} data-aos-anchor-placement="top-bottom">
-                <GlassmorphCard challenge={challenge} onClick={() => openModal(challenge)} index={index} />
-              </div>
+                <GlassmorphCard key={challenge.slug} challenge={challenge} onClick={() => openModal(challenge)} index={index} />
             ))}
           </motion.div>
 

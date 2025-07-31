@@ -57,13 +57,6 @@ export const GlassmorphCard = ({ challenge, onClick, index }: GlassmorphCardProp
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: 'easeOut',
-      }}
       whileHover={{
         scale: 1.05,
         y: -10,

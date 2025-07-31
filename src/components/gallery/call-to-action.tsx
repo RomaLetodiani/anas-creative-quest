@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion';
 
 export const CallToAction = () => (
-  <motion.div className="mt-16 text-center" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }}>
+  <div className="mt-16 text-center">
     <motion.div
       className="glass organic-border-alt shadow-dreamy mx-auto max-w-2xl p-6"
-      whileHover={{ scale: 1.02, y: -5 }}
+      whileHover={{ scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      data-aos="fade-up"
-      data-aos-delay="1000"
     >
       <p className="mb-4 text-lg text-gray-600 dark:text-gray-300">Ready to start your own creative journey?</p>
       <motion.a
@@ -24,5 +22,5 @@ export const CallToAction = () => (
         Try Canva AI
       </motion.a>
     </motion.div>
-  </motion.div>
+  </div>
 );

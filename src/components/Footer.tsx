@@ -5,12 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export const Footer = () => (
-  <motion.footer
-    className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-white px-4 py-20 sm:px-6 lg:px-8 dark:from-gray-900 dark:to-gray-800"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 1, delay: 1 }}
-  >
+  <footer className="relative overflow-hidden bg-gradient-to-br from-gray-50 to-white px-4 py-20 sm:px-6 lg:px-8 dark:from-gray-900 dark:to-gray-800">
     {/* Background elements */}
     <div className="gradient-primary absolute inset-0 opacity-5" />
 
@@ -29,7 +24,7 @@ export const Footer = () => (
     />
 
     <div className="relative z-10 mx-auto max-w-6xl">
-      <motion.div className="mb-12 text-center" initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
+      <div className="mb-12 text-center">
         <div className="glass-strong organic-border shadow-floating p-10">
           <Link href={LINKEDIN_URL} className="block">
             <motion.h3
@@ -41,12 +36,7 @@ export const Footer = () => (
             </motion.h3>
           </Link>
 
-          <motion.div
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+          <motion.div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <motion.a
               href={LINKEDIN_URL}
               target="_blank"
@@ -81,15 +71,10 @@ export const Footer = () => (
             </motion.a>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Footer bottom */}
-      <motion.div
-        className="border-t border-gray-200 pt-8 dark:border-gray-700"
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.7 }}
-      >
+      <div className="border-t border-gray-200 pt-8 dark:border-gray-700">
         <div className="glass organic-border-alt shadow-dreamy p-6 text-center">
           <div className="mx-auto flex items-center justify-center gap-2 text-gray-600 dark:text-gray-300">
             <motion.div
@@ -120,7 +105,7 @@ export const Footer = () => (
             />
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
-  </motion.footer>
+  </footer>
 );
